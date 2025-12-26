@@ -12,6 +12,9 @@ export class MessagesService {
     const message = new Message();
     message.content = content;
     message.sender = sender;
-    return await this.messagesRepository.save(message);
+    return this.messagesRepository.save(message);
+  }
+  async findAll(): Promise<Message[]> {
+    return this.messagesRepository.find();
   }
 }

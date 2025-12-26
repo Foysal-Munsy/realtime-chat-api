@@ -6,6 +6,12 @@ import { Repository } from 'typeorm';
 @Injectable()
 export class MessagesService {
   constructor(
-    @InjectRepository(Message) private messageRepository: Repository<Message>,
+    @InjectRepository(Message) private messagesRepository: Repository<Message>,
   ) {}
+  async create(content: string, sender: string): Promise<Message> {
+    const message = new Message();
+    message.content = content;
+    message.sender = sender;
+    return await this.messagesRepository.save(message);
+  }
 }

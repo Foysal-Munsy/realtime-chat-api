@@ -1,11 +1,13 @@
 import {
   MessageBody,
   SubscribeMessage,
+  WebSocketGateway,
   WebSocketServer,
 } from '@nestjs/websockets';
 import { Server } from 'socket.io';
 import { MessagesService } from './messages.service';
 
+@WebSocketGateway()
 export class MessagesGateway {
   @WebSocketServer()
   server: Server;
